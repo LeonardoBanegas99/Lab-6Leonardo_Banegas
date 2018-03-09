@@ -1,0 +1,20 @@
+            Dunkin Donuts          
+
+CAI: fgvhbj
+
+Fecha: 12/44/009
+
+Correo: leoban99
+
+Cliente: lleoanrdo
+
+Productos
+
+leo      L.44.0
+grace      L.33.0
+
+Sub Total: 77.0
+
+Impuesto: 11.549999999999999
+
+Total: 88.55
