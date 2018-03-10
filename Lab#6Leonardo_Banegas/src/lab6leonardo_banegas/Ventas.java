@@ -2,15 +2,15 @@ package lab6leonardo_banegas;
 
 public class Ventas {
 
-    private int totalventa;
+    private double totalventa;
     private String fecha;
 
-    public Ventas(int totalventa, String fecha) {
+    public Ventas(double totalventa, String fecha) {
         this.totalventa = totalventa;
         this.fecha = fecha;
     }
 
-    public int getTotalventa() {
+    public double getTotalventa() {
         return totalventa;
     }
 

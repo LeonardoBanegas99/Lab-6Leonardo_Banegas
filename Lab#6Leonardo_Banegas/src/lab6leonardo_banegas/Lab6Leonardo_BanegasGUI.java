@@ -15,16 +15,17 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 public class Lab6Leonardo_BanegasGUI extends javax.swing.JFrame {
-
+    
     private Inventario inventario = new Inventario("./src\\inventario.txt");
     private Factura factura = new Factura();
+    private Ingreso ingreso = new Ingreso("./src\\Ingresos.txt");
     private Scanner sc = null;
-
+    
     public Lab6Leonardo_BanegasGUI() {
         initComponents();
-
+        
     }
-
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -71,12 +72,19 @@ public class Lab6Leonardo_BanegasGUI extends javax.swing.JFrame {
         tfCAI = new javax.swing.JTextField();
         jLabel13 = new javax.swing.JLabel();
         tfFecha = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        btngenerarfactura = new javax.swing.JButton();
         btnregresarFactura = new javax.swing.JButton();
-        FrameVentas = new javax.swing.JFrame();
+        FrameIngresos = new javax.swing.JFrame();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        jButton1 = new javax.swing.JButton();
+        jMenuBar2 = new javax.swing.JMenuBar();
+        jMenu3 = new javax.swing.JMenu();
+        jMenuItem2 = new javax.swing.JMenuItem();
         btnProductos = new javax.swing.JButton();
         btnCrearFactura = new javax.swing.JButton();
-        btnVentas = new javax.swing.JButton();
+        btnIngresosTabla = new javax.swing.JButton();
+        jLabel14 = new javax.swing.JLabel();
 
         FrameProductos.setPreferredSize(new java.awt.Dimension(800, 600));
         FrameProductos.setSize(new java.awt.Dimension(800, 600));
@@ -322,10 +330,10 @@ public class Lab6Leonardo_BanegasGUI extends javax.swing.JFrame {
 
         jLabel13.setText("Fecha");
 
-        jButton1.setText("Generar Factura");
-        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+        btngenerarfactura.setText("Generar Factura");
+        btngenerarfactura.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton1MouseClicked(evt);
+                btngenerarfacturaMouseClicked(evt);
             }
         });
 
@@ -358,7 +366,7 @@ public class Lab6Leonardo_BanegasGUI extends javax.swing.JFrame {
                             .addComponent(tfCAI)
                             .addComponent(tfFecha)))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, FrameFacturaLayout.createSequentialGroup()
-                        .addComponent(jButton1)
+                        .addComponent(btngenerarfactura)
                         .addGap(63, 63, 63)))
                 .addGap(87, 87, 87))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, FrameFacturaLayout.createSequentialGroup()
@@ -390,29 +398,86 @@ public class Lab6Leonardo_BanegasGUI extends javax.swing.JFrame {
                     .addComponent(jLabel13)
                     .addComponent(tfFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(38, 38, 38)
-                .addComponent(jButton1)
+                .addComponent(btngenerarfactura)
                 .addGap(8, 8, 8)
                 .addComponent(btnregresarFactura)
                 .addContainerGap())
         );
 
-        FrameVentas.setPreferredSize(new java.awt.Dimension(800, 600));
-        FrameVentas.setSize(new java.awt.Dimension(800, 600));
+        FrameIngresos.setPreferredSize(new java.awt.Dimension(800, 600));
+        FrameIngresos.setSize(new java.awt.Dimension(800, 600));
 
-        javax.swing.GroupLayout FrameVentasLayout = new javax.swing.GroupLayout(FrameVentas.getContentPane());
-        FrameVentas.getContentPane().setLayout(FrameVentasLayout);
-        FrameVentasLayout.setHorizontalGroup(
-            FrameVentasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 800, Short.MAX_VALUE)
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Total Factura Neto", "Impuesto", "Fecha"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Double.class, java.lang.Double.class, java.lang.String.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        jScrollPane2.setViewportView(jTable1);
+
+        jButton1.setText("Regresar");
+        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton1MouseClicked(evt);
+            }
+        });
+
+        jMenu3.setText("Archivos");
+        jMenu3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenu3ActionPerformed(evt);
+            }
+        });
+
+        jMenuItem2.setText("Abrir");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
+        jMenu3.add(jMenuItem2);
+
+        jMenuBar2.add(jMenu3);
+
+        FrameIngresos.setJMenuBar(jMenuBar2);
+
+        javax.swing.GroupLayout FrameIngresosLayout = new javax.swing.GroupLayout(FrameIngresos.getContentPane());
+        FrameIngresos.getContentPane().setLayout(FrameIngresosLayout);
+        FrameIngresosLayout.setHorizontalGroup(
+            FrameIngresosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(FrameIngresosLayout.createSequentialGroup()
+                .addGap(52, 52, 52)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 671, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(77, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, FrameIngresosLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton1)
+                .addContainerGap())
         );
-        FrameVentasLayout.setVerticalGroup(
-            FrameVentasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 600, Short.MAX_VALUE)
+        FrameIngresosLayout.setVerticalGroup(
+            FrameIngresosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(FrameIngresosLayout.createSequentialGroup()
+                .addGap(44, 44, 44)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jButton1)
+                .addContainerGap(41, Short.MAX_VALUE))
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(800, 600));
         setSize(new java.awt.Dimension(800, 600));
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btnProductos.setText("Productos");
         btnProductos.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -420,6 +485,12 @@ public class Lab6Leonardo_BanegasGUI extends javax.swing.JFrame {
                 btnProductosMouseClicked(evt);
             }
         });
+        btnProductos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnProductosActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnProductos, new org.netbeans.lib.awtextra.AbsoluteConstraints(311, 86, 165, 53));
 
         btnCrearFactura.setText("Crear Factura");
         btnCrearFactura.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -427,33 +498,18 @@ public class Lab6Leonardo_BanegasGUI extends javax.swing.JFrame {
                 btnCrearFacturaMouseClicked(evt);
             }
         });
+        getContentPane().add(btnCrearFactura, new org.netbeans.lib.awtextra.AbsoluteConstraints(311, 173, 165, 58));
 
-        btnVentas.setText("Ventas");
+        btnIngresosTabla.setText("Tabla de Ingresos");
+        btnIngresosTabla.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnIngresosTablaMouseClicked(evt);
+            }
+        });
+        getContentPane().add(btnIngresosTabla, new org.netbeans.lib.awtextra.AbsoluteConstraints(311, 265, 165, 53));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(311, 311, 311)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btnVentas, javax.swing.GroupLayout.DEFAULT_SIZE, 165, Short.MAX_VALUE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(btnCrearFactura, javax.swing.GroupLayout.DEFAULT_SIZE, 165, Short.MAX_VALUE)
-                        .addComponent(btnProductos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addContainerGap(324, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(86, 86, 86)
-                .addComponent(btnProductos, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(34, 34, 34)
-                .addComponent(btnCrearFactura, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(34, 34, 34)
-                .addComponent(btnVentas, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(282, Short.MAX_VALUE))
-        );
+        jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/DD.png"))); // NOI18N
+        getContentPane().add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 600));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -478,29 +534,40 @@ public class Lab6Leonardo_BanegasGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAceptarComidaMouseClicked
 
     private void btnguardarProductoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnguardarProductoMouseClicked
-        double preciodecosto = Integer.parseInt(tfPreciodeCosto.getText());
-        double preciodeventa = Integer.parseInt(tfPreciodeVenta.getText());
-        String nombre = tfNombre.getText();
-        if (jComboBox1.getSelectedIndex() == 0) {
-            String estado = tfEstado.getText();
-            int tamano = Integer.parseInt(tfTamano.getText());
-            String tipo = tfTipo.getText();
-            Producto p = new Bebida(estado, tamano, tipo, preciodecosto, preciodeventa, nombre);
-            inventario.getProductos().add(p);
-            factura.getProductos().add(p);
-            inventario.guardar(p);
-        } else {
-            String tipodecomida = tfTipodeComida.getText();
-            Producto p = new Comida(tipodecomida, preciodecosto, preciodeventa, nombre);
-            inventario.getProductos().add(p);
-            factura.getProductos().add(p);
-            inventario.guardar(p);
+        try {
+            double preciodecosto = Integer.parseInt(tfPreciodeCosto.getText());
+            double preciodeventa = Integer.parseInt(tfPreciodeVenta.getText());
+            String nombre = tfNombre.getText();
+            if (jComboBox1.getSelectedIndex() == 0) {
+                String estado = tfEstado.getText();
+                int tamano = Integer.parseInt(tfTamano.getText());
+                String tipo = tfTipo.getText();
+                Producto p = new Bebida(estado, tamano, tipo, preciodecosto, preciodeventa, nombre);
+                inventario.getProductos().add(p);
+                factura.getProductos().add(p);
+                inventario.guardar(p);
+            } else {
+                String tipodecomida = tfTipodeComida.getText();
+                Producto p = new Comida(tipodecomida, preciodecosto, preciodeventa, nombre);
+                inventario.getProductos().add(p);
+                factura.getProductos().add(p);
+                inventario.guardar(p);
+            }
+            DefaultListModel modellista = (DefaultListModel) jList1.getModel();
+            modellista.addElement(inventario.getProductos().get(inventario.getProductos().size() - 1));
+            jList1.setModel(modellista);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "No ingreso numeros correctamente");
+            this.setVisible(true);
+            FrameProductos.setVisible(false);
+            tfPreciodeCosto.setText("");
+            tfPreciodeVenta.setText("");
+            tfNombre.setText("");
+            tfEstado.setText("");
+            tfTamano.setText("");
+            tfTipo.setText("");
+            tfTipodeComida.setText("");
         }
-        DefaultListModel modellista = (DefaultListModel) jList1.getModel();
-        modellista.addElement(inventario.getProductos().get(inventario.getProductos().size() - 1));
-        jList1.setModel(modellista);
-
-        System.out.println(inventario);
         tfPreciodeCosto.setText("");
         tfPreciodeVenta.setText("");
         tfNombre.setText("");
@@ -541,7 +608,7 @@ public class Lab6Leonardo_BanegasGUI extends javax.swing.JFrame {
             ((Bebida) inventario.getProductos().get(x)).setEstado(estado);
             ((Bebida) inventario.getProductos().get(x)).setTamano(tamano);
             ((Bebida) inventario.getProductos().get(x)).setTipo(tipo);
-
+            
             ((Bebida) modelo.getElementAt(x)).setPreciodecosto(preciodecosto);
             ((Bebida) modelo.getElementAt(x)).setPreciodeventa(preciodeventa);
             ((Bebida) modelo.getElementAt(x)).setNombre(nombre);
@@ -558,7 +625,7 @@ public class Lab6Leonardo_BanegasGUI extends javax.swing.JFrame {
             ((Comida) inventario.getProductos().get(x)).setPreciodeventa(preciodeventa);
             ((Comida) inventario.getProductos().get(x)).setNombre(nombre);
             ((Comida) inventario.getProductos().get(x)).setTipodecomida(tipodecomida);
-
+            
             ((Comida) modelo.getElementAt(x)).setPreciodecosto(preciodecosto);
             ((Comida) modelo.getElementAt(x)).setPreciodeventa(preciodeventa);
             ((Comida) modelo.getElementAt(x)).setNombre(nombre);
@@ -589,20 +656,41 @@ public class Lab6Leonardo_BanegasGUI extends javax.swing.JFrame {
         FrameFactura.setVisible(true);
     }//GEN-LAST:event_btnCrearFacturaMouseClicked
 
-    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
-        factura.setCorreo(tfCorreo.getText());
-        factura.setNombredelcliente(tfNombreCliente.getText());
-        factura.setRTN(Integer.parseInt(tfRTN.getText()));
-        factura.setCAI(tfCAI.getText());
-        factura.setFecha(tfFecha.getText());
-        factura.generarFactura();
-
+    private void btngenerarfacturaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btngenerarfacturaMouseClicked
+        try {
+            factura.setCorreo(tfCorreo.getText());
+            factura.setNombredelcliente(tfNombreCliente.getText());
+            factura.setRTN(Integer.parseInt(tfRTN.getText()));
+            factura.setCAI(tfCAI.getText());
+            factura.setFecha(tfFecha.getText());
+            factura.generarFactura();
+            double totalventas = 0;
+            double subtotal = 0;
+            for (int i = 0; i < inventario.getProductos().size(); i++) {
+                subtotal = subtotal + inventario.getProductos().get(i).getPreciodeventa();
+            }
+            double impuesto = subtotal * 0.15;
+            totalventas = totalventas + impuesto + subtotal;
+            Ventas v = new Ventas(totalventas, factura.getFecha());
+            ingreso.getVentas().add(v);
+            ingreso.guardarIngreso(v);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "No ingreso numeros correctamente");
+            tfCorreo.setText("");
+            tfNombreCliente.setText("");
+            tfRTN.setText("");
+            tfCAI.setText("");
+            tfFecha.setText("");
+            this.setVisible(true);
+            FrameFactura.setVisible(false);
+        }
+        
         tfCorreo.setText("");
         tfNombreCliente.setText("");
         tfRTN.setText("");
         tfCAI.setText("");
         tfFecha.setText("");
-    }//GEN-LAST:event_jButton1MouseClicked
+    }//GEN-LAST:event_btngenerarfacturaMouseClicked
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         File fichero = null;
@@ -664,6 +752,108 @@ public class Lab6Leonardo_BanegasGUI extends javax.swing.JFrame {
         FrameFactura.setVisible(false);
     }//GEN-LAST:event_btnregresarFacturaMouseClicked
 
+    private void btnProductosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProductosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnProductosActionPerformed
+
+    private void btnIngresosTablaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnIngresosTablaMouseClicked
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+                new Object[][]{},
+                new String[]{
+                    "Total Factura Neto", "Impuesto", "Fecha"
+                }
+        ) {
+            Class[] types = new Class[]{
+                java.lang.Double.class, java.lang.Double.class, java.lang.String.class
+            };
+            
+            public Class getColumnClass(int columnIndex) {
+                return types[columnIndex];
+            }
+        });
+        
+        DefaultTableModel modelotabla = (DefaultTableModel) jTable1.getModel();
+        for (int i = 0; i < ingreso.getVentas().size(); i++) {
+            double x = ingreso.getVentas().get(i).getTotalventa();
+            double impuesto = x * 0.15;
+            Object[] newrow = {
+                ingreso.getVentas().get(i).getTotalventa(),
+                impuesto, ingreso.getVentas().get(i).getFecha()};
+            modelotabla.addRow(newrow);
+        }
+        jTable1.setModel(modelotabla);
+        this.setVisible(false);
+        FrameIngresos.setVisible(true);
+    }//GEN-LAST:event_btnIngresosTablaMouseClicked
+
+    private void jMenu3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu3ActionPerformed
+        
+
+    }//GEN-LAST:event_jMenu3ActionPerformed
+
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        ingreso.getVentas().clear();;
+        File fichero = null;
+        FileReader fr = null;
+        BufferedReader br = null;
+        JFileChooser filechooser = new JFileChooser("./");
+        int seleccion = filechooser.showSaveDialog(this);
+        try {
+            if (seleccion == JFileChooser.APPROVE_OPTION) {
+                fichero = filechooser.getSelectedFile();
+                fr = new FileReader(fichero);
+                br = new BufferedReader(fr);
+                String linea;
+                String[] array1 = null;
+                String[] array2 = null;
+                linea = br.readLine();
+                array1 = linea.split(";");
+                for (int i = 0; i < array1.length; i++) {
+                    String l = array1[i];
+                    array2 = l.split(",");
+                    double totalventas = Double.parseDouble(array2[0]);
+                    String fecha = array2[1];
+                    ingreso.getVentas().add(new Ventas(totalventas, fecha));
+                }
+                
+                jTable1.setModel(new javax.swing.table.DefaultTableModel(
+                        new Object[][]{},
+                        new String[]{
+                            "Total Factura Neto", "Impuesto", "Fecha"
+                        }
+                ) {
+                    Class[] types = new Class[]{
+                        java.lang.Double.class, java.lang.Double.class, java.lang.String.class
+                    };
+                    
+                    public Class getColumnClass(int columnIndex) {
+                        return types[columnIndex];
+                    }
+                });
+                
+                DefaultTableModel modelotabla = (DefaultTableModel) jTable1.getModel();
+                for (int i = 0; i < ingreso.getVentas().size(); i++) {
+                    double x = ingreso.getVentas().get(i).getTotalventa();
+                    double impuesto = x * 0.15;
+                    Object[] newrow = {
+                        ingreso.getVentas().get(i).getTotalventa(),
+                        impuesto, ingreso.getVentas().get(i).getFecha()};
+                    modelotabla.addRow(newrow);
+                }
+                jTable1.setModel(modelotabla);
+            }
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(Lab6Leonardo_BanegasGUI.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(Lab6Leonardo_BanegasGUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
+
+    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+        this.setVisible(true);
+        FrameIngresos.setVisible(false);
+    }//GEN-LAST:event_jButton1MouseClicked
+    
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -701,16 +891,17 @@ public class Lab6Leonardo_BanegasGUI extends javax.swing.JFrame {
     private javax.swing.JDialog DialogComida;
     private javax.swing.JMenuItem Eliminar;
     private javax.swing.JFrame FrameFactura;
+    private javax.swing.JFrame FrameIngresos;
     private javax.swing.JFrame FrameProductos;
-    private javax.swing.JFrame FrameVentas;
     private javax.swing.JMenuItem Modificar;
     private javax.swing.JPopupMenu PopUpEliminarModificarProducto;
     private javax.swing.JButton btnAceptarComida;
     private javax.swing.JButton btnCrearFactura;
     private javax.swing.JButton btnDialogAceptar1;
+    private javax.swing.JButton btnIngresosTabla;
     private javax.swing.JButton btnProductos;
     private javax.swing.JButton btnRegresar;
-    private javax.swing.JButton btnVentas;
+    private javax.swing.JButton btngenerarfactura;
     private javax.swing.JButton btnguardarProducto;
     private javax.swing.JButton btnregresarFactura;
     private javax.swing.JButton jButton1;
@@ -720,6 +911,7 @@ public class Lab6Leonardo_BanegasGUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -730,9 +922,14 @@ public class Lab6Leonardo_BanegasGUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JList<String> jList1;
     private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuBar jMenuBar2;
     private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTable jTable1;
     private javax.swing.JTextField tfCAI;
     private javax.swing.JTextField tfCorreo;
     private javax.swing.JTextField tfEstado;
